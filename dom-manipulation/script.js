@@ -33,3 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     newQuoteBtn.addEventListener('click', showRandomQuote);
 });
+let quotes = []; // Initialize or load existing quotes  
+
+function saveQuotes() {  
+    localStorage.setItem('quotes', JSON.stringify(quotes)); // Save the quotes to local storage  
+}  
+
+function loadQuotes() {  
+    const storedQuotes = localStorage.getItem('quotes');  
+    if (storedQuotes) {  
+        quotes = JSON.parse(storedQuotes); // Load existing quotes from local storage  
+    }  
+}  
+
+// Call loadQuotes on page load  
+window.onload = function() {  
+    loadQuotes();  
+    // Optionally render the loaded quotes to the UI  
+};
