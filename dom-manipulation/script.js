@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const quoteDisplay = document.getElementById('quoteDisplay');
+    const quoteDisplay = document.getElementById('quoteDisplay.innerhtml');
     const newQuoteBtn = document.getElementById('newQuote');
     const newQuoteText = document.getElementById('newQuoteText');
     const newQuoteCategory = document.getElementById('newQuoteCategory');
