@@ -42,7 +42,8 @@ function saveQuotes() {
 function loadQuotes() {  
     const storedQuotes = localStorage.getItem('quotes');  
     if (storedQuotes) {  
-        quotes = JSON.parse(storedQuotes); // Load existing quotes from local storage  
+        quotes = JSON.parse(storedQuotes); 
+        ["Export Quotes"]// Load existing quotes from local storage  
     }  
 }  
 
