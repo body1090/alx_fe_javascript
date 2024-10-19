@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (quoteText === "" || quoteCategory === "") {
             alert("Please enter both a quote and a category.");
             return;
+            ["createAddQuoteForm"]
         }
 
         quotes.push({ text: quoteText, category: quoteCategory });
