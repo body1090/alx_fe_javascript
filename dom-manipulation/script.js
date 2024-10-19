@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const newQuoteCategory = document.getElementById('newQuoteCategory');
     const categoryFilter = document.getElementById('categoryFilter');
 
+    let quotes = [];
+
     // Load quotes from Local Storage
     function loadQuotes() {
         const storedQuotes = JSON.parse(localStorage.getItem('quotes') || '[]');
@@ -16,6 +18,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Save quotes to Local Storage
     function saveQuotes() {
         localStorage.setItem('quotes', JSON.stringify(quotes));
+    }
+
+    // Fetch quotes from server (JSONPlaceholder)
+    function fetchServerQuotes() {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(response => response.json())
+            .then(data => {
+                const serverQuotes = data.map(item => ({ text: item.title, category: 'General' }));
+                quotes.push(...serverQuotes);
+                saveQuotes();
+                populateCategories();
+                showRandomQuote();
+            })
+            .catch(error => console.error('Error fetching quotes from server:', error));
+    }
+
+    // Sync quotes periodically
+    function syncQuotes() {
+        setInterval(fetchServerQuotes, 60000); // Fetch new quotes every 60 seconds
     }
 
     // Populate categories dynamically
@@ -42,14 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('lastCategory', selectedCategory);
     }
 
-    let quotes = [
-        { text: "The best way to predict the future is to create it.", category: "Motivation" },
-        { text: "Life is 10% what happens to us and 90% how we react to it.", category: "Life" }
-    ];
-
     function showRandomQuote() {
         filterQuotes();
-        sessionStorage.setItem('lastQuote', JSON.stringify(quote));
     }
 
     function addQuote() {
@@ -68,8 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
         newQuoteCategory.value = "";
     }
 
-    // Event listener for the "Add Task" button
+    // Event listeners
     newQuoteBtn.addEventListener('click', showRandomQuote);
 
     loadQuotes();
+    fetchServerQuotes(); // Initial server fetch
+    syncQuotes(); // Start periodic syncing
 });
