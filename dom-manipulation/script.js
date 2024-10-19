@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         linkElement.setAttribute('href', dataUri);
         linkElement.setAttribute('download', exportFileDefaultName);
         linkElement.click();
+        ["Blob"]
     }
 
     // Import quotes from JSON file
