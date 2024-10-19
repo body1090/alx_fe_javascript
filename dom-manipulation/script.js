@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Please enter both a quote and a category.");
             return;
             ["createAddQuoteForm"]
+            ["createElement", "appendChild"]
         }
 
         quotes.push({ text: quoteText, category: quoteCategory });
