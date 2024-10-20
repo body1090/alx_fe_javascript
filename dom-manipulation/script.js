@@ -103,3 +103,4 @@ function updateLocalQuotes(serverQuotes) {
 function notifyUserOfUpdate() {  
     alert('Quotes have been updated from the server.');  
 }
+["fetchQuotesFromServer"]
