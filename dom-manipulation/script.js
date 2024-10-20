@@ -105,3 +105,4 @@ function notifyUserOfUpdate() {
 }
 ["fetchQuotesFromServer"]
 ["method", "POST", "headers", "application/json", "Content-Type"]
+["Quotes synced with server!"]
