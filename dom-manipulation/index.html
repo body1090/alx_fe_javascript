@@ -20,6 +20,12 @@
         <button id="exportQuotes">Export Quotes</button>
         <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
     </div>
+    <div id="conflictResolution" style="display:none;">  
+        <p>Local Quote: <span id="localQuote"></span></p>  
+        <p>Server Quote: <span id="serverQuote"></span></p>  
+        <button onclick="resolveConflict('local')">Keep Local</button>  
+        <button onclick="resolveConflict('server')">Keep Server</button>  
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

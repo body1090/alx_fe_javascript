@@ -90,3 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchServerQuotes(); // Initial server fetch
     syncQuotes(); // Start periodic syncing
 });
+setInterval(async () => {  
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');  
+    const quotes = await response.json();  
+    updateLocalQuotes(quotes);  
+}, 5000); // Fetch new quotes every 5 seconds
+function updateLocalQuotes(serverQuotes) {  
+    const localQuotes = JSON.parse(localStorage.getItem('quotes')) || [];  
+    // Replace old quotes with server quotes  
+    localStorage.setItem('quotes', JSON.stringify(serverQuotes));  
+}
+function notifyUserOfUpdate() {  
+    alert('Quotes have been updated from the server.');  
+}
